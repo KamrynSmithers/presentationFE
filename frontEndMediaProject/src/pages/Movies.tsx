@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { getTrendingMovies, searchMovies, getMovieDetails } from '../api/vidsrc';
 import MovieDetailsModal from '../components/MovieDetailsModal';
-import MoviePlayer from '../components/MoviePlayer';
 import '../movies.css';
 
 interface Movie {
@@ -16,7 +15,6 @@ function Movies() {
   const [movies, setMovies] = useState<Movie[]>([]);
   const [favorites, setFavorites] = useState<Movie[]>([]);
   const [selectedMovieId, setSelectedMovieId] = useState<number | null>(null);
-  const [playingMovie, setPlayingMovie] = useState<any | null>(null);
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
   const [showFavorites, setShowFavorites] = useState(false);
@@ -80,23 +78,10 @@ function Movies() {
     localStorage.setItem('favorites', JSON.stringify(newFavorites));
   };
 
-  const handlePlayMovie = async (e: React.MouseEvent, movieId: number) => {
-    e.stopPropagation();
-    const details = await getMovieDetails(movieId);
-    setPlayingMovie(details);
-  };
 
   const displayedMovies = showFavorites ? favorites : movies;
 
-  if (playingMovie) {
-    return (
-      <MoviePlayer
-        tmdbId={playingMovie.id.toString()}
-        type="movie"
-        onClose={() => setPlayingMovie(null)}
-      />
-    );
-  }
+
 
   if (loading) {
     return <div className="loading">Loading movies...</div>;
@@ -150,12 +135,7 @@ function Movies() {
                 src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} 
                 alt={movie.title}
               />
-              <button 
-                className="play-button"
-                onClick={(e) => handlePlayMovie(e, movie.id)}
-              >
-                ▶ Play
-              </button>
+
               <div className="movie-info">
                 <h3>{movie.title}</h3>
                 <span className="movie-year">
