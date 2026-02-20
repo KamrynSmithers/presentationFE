@@ -1,0 +1,30 @@
+
+
+/*Footer Section*/
+#footer footer {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  gap: 15px; /*Space between icons*/
+  background-color: black;
+}
+
+#footer img {
+  width: 50px;   /* control size */
+  height: 50px;
+  cursor: pointer;
+  padding: 10px;
+}
+
+
+
+.signInLogin {
+  color: black;
+}
+
+html, body, #root {
+  width: 100%;
+  min-height: 100%;
+  overflow-y: auto;
+}

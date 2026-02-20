@@ -1,0 +1,127 @@
+.books-container {
+  padding: 40px;
+  min-height: 100vh;
+  background-color: #0a0a0a;
+  color: white;
+}
+
+.books-container h1 {
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.books-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 30px;
+}
+
+.book-card {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: #1a1a1a;
+}
+
+.book-card:hover {
+  transform: scale(1.05);
+}
+
+.book-card img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  display: block;
+}
+
+.book-info {
+  padding: 15px;
+}
+
+.book-info h3 {
+  font-size: 1rem;
+  margin: 0 0 8px 0;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+#author {
+    color: white;
+}
+
+.book-author {
+  color: white;
+  font-size: 0.9rem;
+  margin: 5px 0;
+}
+
+.book-year {
+  color: #888;
+  font-size: 0.85rem;
+}
+
+.no-books {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #888;
+  margin-top: 50px;
+  grid-column: 1 / -1;
+}
+
+
+/* Wrapper for scrollable content */
+.books-scroll-container {
+  height: calc(100vh - 80px); /* adjust if you have a fixed navbar/footer */
+  overflow-y: auto;
+  padding: 0 40px;
+}
+/* Wrapper for scrollable content */
+.books-scroll-container {
+  height: calc(100vh - 80px); /* adjust if you have a fixed navbar/footer */
+  overflow-y: auto;
+  padding: 0 40px;
+}
+
+/* Genre buttons */
+.genre-bar {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 25px;
+}
+
+/* 🔒 lock sizing so hover doesn't shift layout */
+.genre-bar button {
+  background: #1a1a1a;
+  color: white;
+  border: 1px solid #333;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.15s ease;
+  font-weight: 500;          /* fixed weight */
+  min-width: 110px;          /* prevents Romance jump */
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.genre-bar button:hover {
+  background: #4bb6b7;
+  color: black;
+  transform: translateY(-1px); /* subtle lift instead of resize */
+}
+
+.genre-bar button.active {
+  background: #4bb6b7;
+  color: black;
+}
+
+/* Clear button */
+.clear-genre {
+  background: transparent;
+  border: 1px solid #555;
+  color: #aaa;
+}
